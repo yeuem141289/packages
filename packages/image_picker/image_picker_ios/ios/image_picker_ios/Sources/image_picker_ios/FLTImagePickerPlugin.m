@@ -110,7 +110,7 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
   PHPickerViewController *pickerViewController =
       [[PHPickerViewController alloc] initWithConfiguration:config];
   pickerViewController.delegate = self;
-  pickerViewController.presentationController.delegate = self;
+ // pickerViewController.presentationController.delegate = self;
   self.callContext = context;
 
   [self showPhotoLibraryWithPHPicker:pickerViewController];
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
 - (void)launchUIImagePickerWithSource:(nonnull FLTSourceSpecification *)source
                               context:(nonnull FLTImagePickerMethodCallContext *)context {
   UIImagePickerController *imagePickerController = [self createImagePickerController];
-  imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+  imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
   imagePickerController.delegate = self;
   if (context.includeVideo) {
     imagePickerController.mediaTypes = @[ (NSString *)kUTTypeImage, (NSString *)kUTTypeMovie ];
